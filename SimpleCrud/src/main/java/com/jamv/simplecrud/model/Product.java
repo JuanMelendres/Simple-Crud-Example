@@ -17,7 +17,6 @@ import java.util.Date;
 @Table(name="TBL_PRODUCT")
 public class Product  implements Serializable {
     @Id
-    @Column(name = "ProductID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqProducts")
     @SequenceGenerator(name = "seqProducts", allocationSize = 1, sequenceName = "SEQ_PRODUCTS")
     Long productID;

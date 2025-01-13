@@ -15,21 +15,21 @@ import java.util.Date;
 @Data
 public class ProductDTO {
 
-    Long productID;
+    Long id;
 
     @NotBlank(message = "The product name is required")
-    String productName;
+    String title;
 
-    String productDescription;
+    String description;
 
     @NotBlank(message = "The product price is required")
-    Double productPrice;
+    Double price;
 
     @NotBlank(message = "The product stock is required")
-    Integer productStock;
+    Integer stock;
 
     @NotBlank(message = "The product category is required")
-    String productCategory;
+    String category;
 
     Date createDate;
 
