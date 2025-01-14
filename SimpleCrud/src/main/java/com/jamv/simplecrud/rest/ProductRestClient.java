@@ -26,13 +26,11 @@ public class ProductRestClient {
                 .retrieve()
                 .onStatus(HttpStatusCode::is4xxClientError,
                         (req, res) -> {
-                            log.error("Failed to get product with id: {}", id);
-                            log.error("Error: {}", res.getStatusCode());
-                            log.error("Error: {}", res.getStatusText());
+                            log.error("Client Error: {}", res.getStatusCode());
+                            log.error("Client Error: {}", res.getStatusText());
                         })
                 .onStatus(HttpStatusCode::is5xxServerError,
                 (req, res) -> {
-                    log.error("Failed to get product with id: {}", id);
                     log.error("Server error: {}", res.getStatusCode());
                     log.error("Server error: {}", res.getStatusText());
                 })
