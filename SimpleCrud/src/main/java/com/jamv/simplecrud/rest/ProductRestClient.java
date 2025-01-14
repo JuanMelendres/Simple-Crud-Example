@@ -1,6 +1,6 @@
 package com.jamv.simplecrud.rest;
 
-import com.jamv.simplecrud.model.ProductDTO;
+import com.jamv.simplecrud.dto.ProductDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatusCode;

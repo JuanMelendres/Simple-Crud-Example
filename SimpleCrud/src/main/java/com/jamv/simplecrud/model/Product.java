@@ -15,27 +15,34 @@ import java.util.Date;
 @Entity
 @Data
 @Table(name="TBL_PRODUCT")
-public class Product  implements Serializable {
+public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqProducts")
-    @SequenceGenerator(name = "seqProducts", allocationSize = 1, sequenceName = "SEQ_PRODUCTS")
-    Long productID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PRODUCT_ID", nullable = false, updatable = false)
+    private Long productID;
 
     @NonNull @NotBlank(message = "The product name is required")
-    String productName;
+    @Column(name = "PRODUCT_NAME")
+    private String productName;
 
-    String productDescription;
+    @Column(name = "PRODUCT_DESCRIPTION")
+    private String productDescription;
 
-    @NotNull @NotBlank(message = "The product price is required")
-    Double productPrice;
+    @NotNull(message = "The product price is required")
+    @Column(name = "PRODUCT_PRICE")
+    private Double productPrice;
 
-    @NonNull @NotBlank(message = "The product stock is required")
-    Integer productStock;
+    @NotNull(message = "The product stock is required")
+    @Column(name = "PRODUCT_STOCK")
+    private Integer productStock;
 
-    @NonNull @NotBlank(message = "The product category is required")
-    String productCategory;
+    @NotNull(message = "The product category is required")
+    @Column(name = "PRODUCT_CATEGORY")
+    private String productCategory;
 
-    Date createDate;
+    @Column(name = "CREATE_AT")
+    Date createAt;
 
-    Date updateDate;
+    @Column(name = "UPDATE_AT")
+    Date updatedAt;
 }

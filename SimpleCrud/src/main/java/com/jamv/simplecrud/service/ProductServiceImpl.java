@@ -2,13 +2,12 @@ package com.jamv.simplecrud.service;
 
 import com.jamv.simplecrud.mappers.ProductMappers;
 import com.jamv.simplecrud.model.Product;
-import com.jamv.simplecrud.model.ProductDTO;
+import com.jamv.simplecrud.dto.ProductDTO;
 import com.jamv.simplecrud.repository.ProductRepository;
 import com.jamv.simplecrud.rest.ProductRestClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;

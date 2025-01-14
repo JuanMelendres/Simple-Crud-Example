@@ -33,6 +33,18 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // Swagger
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.1'
+
+    // Mappers
+    implementation 'org.mapstruct:mapstruct:1.6.3' // Check for the latest version on Maven Central
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+
+    // Oracle
+    implementation 'org.hibernate.orm:hibernate-core:6.3.1.Final'
+    implementation 'com.oracle.database.jdbc:ojdbc11:23.6.0.24.10'
+
 }
 
 tasks.named('test') {

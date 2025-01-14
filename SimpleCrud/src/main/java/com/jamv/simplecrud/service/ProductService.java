@@ -1,6 +1,6 @@
 package com.jamv.simplecrud.service;
 
-import com.jamv.simplecrud.model.ProductDTO;
+import com.jamv.simplecrud.dto.ProductDTO;
 
 import java.util.List;
 import java.util.Optional;

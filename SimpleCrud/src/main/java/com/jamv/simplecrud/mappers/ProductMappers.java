@@ -1,7 +1,7 @@
 package com.jamv.simplecrud.mappers;
 
 import com.jamv.simplecrud.model.Product;
-import com.jamv.simplecrud.model.ProductDTO;
+import com.jamv.simplecrud.dto.ProductDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
