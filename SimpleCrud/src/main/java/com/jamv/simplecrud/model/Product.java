@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @EqualsAndHashCode(callSuper=false)
@@ -40,9 +43,11 @@ public class Product {
     @Column(name = "PRODUCT_CATEGORY")
     private String productCategory;
 
-    @Column(name = "CREATE_AT")
-    Date createAt;
+    @Column(name = "CREATED_AT", updatable = false)
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
-    @Column(name = "UPDATE_AT")
-    Date updatedAt;
+    @Column(name = "UPDATED_AT")
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 }
