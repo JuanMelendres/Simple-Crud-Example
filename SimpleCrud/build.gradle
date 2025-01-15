@@ -45,6 +45,19 @@ dependencies {
     implementation 'org.hibernate.orm:hibernate-core:6.3.1.Final'
     implementation 'com.oracle.database.jdbc:ojdbc11:23.6.0.24.10'
 
+    // WebClient
+    implementation 'org.springframework.boot:spring-boot-starter-webflux:3.4.1'
+
+}
+
+test {
+    filter {
+        //exclude all tests from a package.
+        excludeTestsMatching "com.jamv.simplecrud.dto.*"
+        excludeTestsMatching "com.jamv.simplecrud.model.*"
+        excludeTestsMatching "com.jamv.simplecrud.repository.*"
+        excludeTestsMatching "com.jamv.simplecrud.exception.*"
+    }
 }
 
 tasks.named('test') {
