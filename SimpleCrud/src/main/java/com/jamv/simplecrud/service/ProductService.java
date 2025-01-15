@@ -7,11 +7,16 @@ import java.util.Optional;
 
 public interface ProductService {
 
-    public List<ProductDTO> findAll();
-    public Optional<ProductDTO> findById(int id);
-    public void save(ProductDTO product);
-    public void update(ProductDTO product);
-    public void delete(int id);
-    public void saveRandomProduct();
-
+    List<ProductDTO> findAll();
+    Optional<ProductDTO> findById(int id);
+    void save(ProductDTO product);
+    void update(ProductDTO product);
+    void delete(int id);
+    void saveRandomProduct();
+    Optional<ProductDTO> findByName(String name);
+    List<ProductDTO> findByCategory(String category);
+    List<ProductDTO> findByPriceGreaterThan(double price);
+    List<ProductDTO> findByPriceLessThan(double price);
+    List<ProductDTO> findByStockGreaterThan(int stock);
+    List<ProductDTO> findByStockLessThan(int stock);
 }
