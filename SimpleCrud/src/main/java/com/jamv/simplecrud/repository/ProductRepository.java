@@ -10,15 +10,15 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     Optional<Product> findByProductNameIgnoreCase(String name);
-
-    List<Product> findByCategoryIgnoreCase(String category);
-
-    List<Product> findByPriceGreaterThan(double price);
-
-    List<Product> findByPriceLessThan(double price);
-
-    List<Product> findByStockGreaterThan(int stock);
-
-    List<Product> findByStockLessThan(int stock);
+//
+//    List<Product> findByCategoryIgnoreCase(String category);
+//
+//    List<Product> findByPriceGreaterThan(double price);
+//
+//    List<Product> findByPriceLessThan(double price);
+//
+//    List<Product> findByStockGreaterThan(int stock);
+//
+//    List<Product> findByStockLessThan(int stock);
 
 }

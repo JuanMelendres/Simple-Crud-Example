@@ -7,6 +7,7 @@ import com.jamv.simplecrud.repository.ProductRepository;
 import com.jamv.simplecrud.rest.ProductRestClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,9 +38,9 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductDTO> findAll() {
         log.info("Finding all products");
 
-        final List<Product> products = productRepository.findAll();
+        List<Product> products = productRepository.findAll();
 
-        final List<ProductDTO> productDTOs = mapProductsToDTOs(products);
+        List<ProductDTO> productDTOs = mapProductsToDTOs(products);
 
         log.info("Products found: {}", productDTOs);
 
@@ -59,6 +60,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void save(ProductDTO product) {
 
         log.info("Saving product: {}", product);
@@ -72,6 +74,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void update(ProductDTO product) {
 
         log.info("Updating product: {}", product);
@@ -94,6 +97,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void saveRandomProduct() {
 
         log.info("Saving random product");
@@ -102,11 +106,11 @@ public class ProductServiceImpl implements ProductService {
 
         ProductDTO randomProduct = productRestClient.getRandomProduct(randomId);
 
-        log.info("Random product: {}", randomProduct);
+        randomProduct.setId(null);
 
         Product newProduct = this.productMappers.productDTOToProductEntity(randomProduct);
 
-        productRepository.saveAndFlush(newProduct);
+        productRepository.save(newProduct);
 
         log.info("Saved Random product: {}", newProduct);
 
@@ -121,71 +125,71 @@ public class ProductServiceImpl implements ProductService {
 
         return product.map(this.productMappers::productEntitytToProductDTO);
     }
-
-    @Override
-    public List<ProductDTO> findByCategory(String category) {
-        log.info("Finding products in category: {}", category);
-
-        List<Product> products = productRepository.findByCategoryIgnoreCase(category);
-
-        List<ProductDTO> productDTOs = mapProductsToDTOs(products);
-
-        log.info("Products found: {}", productDTOs);
-
-        return productDTOs;
-    }
-
-    @Override
-    public List<ProductDTO> findByPriceGreaterThan(double price) {
-        log.info("Finding products with price greater than: {}", price);
-
-        List<Product> products = productRepository.findByPriceGreaterThan(price);
-
-        List<ProductDTO> productDTOs = mapProductsToDTOs(products);
-
-        log.info("Products found: {}", productDTOs);
-
-        return productDTOs;
-    }
-
-    @Override
-    public List<ProductDTO> findByPriceLessThan(double price) {
-        log.info("Finding products with price less than: {}", price);
-
-        List<Product> products = productRepository.findByPriceLessThan(price);
-
-        List<ProductDTO> productDTOs = mapProductsToDTOs(products);
-
-        log.info("Products found: {}", productDTOs);
-
-        return productDTOs;
-    }
-
-    @Override
-    public List<ProductDTO> findByStockGreaterThan(int stock) {
-        log.info("Finding products with stock greater than: {}", stock);
-
-        List<Product> products = productRepository.findByStockGreaterThan(stock);
-
-        List<ProductDTO> productDTOs = mapProductsToDTOs(products);
-
-        log.info("Products found: {}", productDTOs);
-
-        return productDTOs;
-    }
-
-    @Override
-    public List<ProductDTO> findByStockLessThan(int stock) {
-        log.info("Finding products with stock less than: {}", stock);
-
-        List<Product> products = productRepository.findByStockLessThan(stock);
-
-        List<ProductDTO> productDTOs = mapProductsToDTOs(products);
-
-        log.info("Products found: {}", productDTOs);
-
-        return productDTOs;
-    }
+//
+//    @Override
+//    public List<ProductDTO> findByCategory(String category) {
+//        log.info("Finding products in category: {}", category);
+//
+//        List<Product> products = productRepository.findByCategoryIgnoreCase(category);
+//
+//        List<ProductDTO> productDTOs = mapProductsToDTOs(products);
+//
+//        log.info("Products found: {}", productDTOs);
+//
+//        return productDTOs;
+//    }
+//
+//    @Override
+//    public List<ProductDTO> findByPriceGreaterThan(double price) {
+//        log.info("Finding products with price greater than: {}", price);
+//
+//        List<Product> products = productRepository.findByPriceGreaterThan(price);
+//
+//        List<ProductDTO> productDTOs = mapProductsToDTOs(products);
+//
+//        log.info("Products found: {}", productDTOs);
+//
+//        return productDTOs;
+//    }
+//
+//    @Override
+//    public List<ProductDTO> findByPriceLessThan(double price) {
+//        log.info("Finding products with price less than: {}", price);
+//
+//        List<Product> products = productRepository.findByPriceLessThan(price);
+//
+//        List<ProductDTO> productDTOs = mapProductsToDTOs(products);
+//
+//        log.info("Products found: {}", productDTOs);
+//
+//        return productDTOs;
+//    }
+//
+//    @Override
+//    public List<ProductDTO> findByStockGreaterThan(int stock) {
+//        log.info("Finding products with stock greater than: {}", stock);
+//
+//        List<Product> products = productRepository.findByStockGreaterThan(stock);
+//
+//        List<ProductDTO> productDTOs = mapProductsToDTOs(products);
+//
+//        log.info("Products found: {}", productDTOs);
+//
+//        return productDTOs;
+//    }
+//
+//    @Override
+//    public List<ProductDTO> findByStockLessThan(int stock) {
+//        log.info("Finding products with stock less than: {}", stock);
+//
+//        List<Product> products = productRepository.findByStockLessThan(stock);
+//
+//        List<ProductDTO> productDTOs = mapProductsToDTOs(products);
+//
+//        log.info("Products found: {}", productDTOs);
+//
+//        return productDTOs;
+//    }
 
     /**
      * Maps a list of Product entities to a list of ProductDTOs.

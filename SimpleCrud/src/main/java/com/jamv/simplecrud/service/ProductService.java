@@ -14,9 +14,9 @@ public interface ProductService {
     void delete(int id);
     void saveRandomProduct();
     Optional<ProductDTO> findByName(String name);
-    List<ProductDTO> findByCategory(String category);
-    List<ProductDTO> findByPriceGreaterThan(double price);
-    List<ProductDTO> findByPriceLessThan(double price);
-    List<ProductDTO> findByStockGreaterThan(int stock);
-    List<ProductDTO> findByStockLessThan(int stock);
+//    List<ProductDTO> findByCategory(String category);
+//    List<ProductDTO> findByPriceGreaterThan(double price);
+//    List<ProductDTO> findByPriceLessThan(double price);
+//    List<ProductDTO> findByStockGreaterThan(int stock);
+//    List<ProductDTO> findByStockLessThan(int stock);
 }
